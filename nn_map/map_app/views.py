@@ -10,6 +10,7 @@ class MyMapFolium(TemplateView):
     def get_context_data(self, **kwargs):
         nn_map = folium.Map(location=[56.326798, 44.006509],
                             zoom_start=12)
+        # Кнопка отображения и скрытия маркеров
         button_script = """\
             <script>
                 function toggleMarkers() {
@@ -27,6 +28,7 @@ class MyMapFolium(TemplateView):
         """
 
         nn_map.get_root().header.add_child(folium.Element(button_script))
+        # Добавление маркеров и описаний с фото
         encoded_for_sluda = base64.b64encode(open('static/normal.jpg', 'rb').read()).decode()
         html_for_sluda = '<h1>Водопад в парке "Швейцария"</h1>' \
                          '<center><img src="data:image/jpeg;base64,{}"></center>' \
