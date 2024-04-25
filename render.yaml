@@ -3,7 +3,7 @@ services:
     plan: free
     name: nn_map
     runtime: python
-    buildCommand: "build.sh"
+    buildCommand: "./build.sh"
     startCommand: "python -m gunicorn nn_map.asgi:application -k uvicorn.workers.UvicornWorker"
     envVars:
       - key: SECRET_KEY
